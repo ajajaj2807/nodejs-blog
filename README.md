@@ -9,10 +9,15 @@
 
 > You need to have NodeJS, Git bash and MongoDB installed before running these commands.
 
+> Going to /delete Deletes all the posts ( For development purposes only)
+
 # Todos 
 1. Create custom Users page.
 2. Add user authentication so that only authorized users can post.
 3. Ability to add images and some other basic markup content inside post content.
+
+> Posts currently support markdown syntax. Go to https://stackedit.io/ to edit posts and make your next post look awesome!
+
 4. Add post views
 5. More coming soon...
 

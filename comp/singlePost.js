@@ -1,5 +1,7 @@
 import Axios from 'axios'
 
+const ReactMarkdown = require('react-markdown')
+
 export class SinglePost extends React.Component {
     
     state = {
@@ -33,7 +35,7 @@ export class SinglePost extends React.Component {
                     {author} . { date }
                 </div>
                 <div className="content">
-                    { content }
+                    <ReactMarkdown source={ content } />
                 </div>
 
                 <style jsx>
@@ -59,8 +61,11 @@ export class SinglePost extends React.Component {
                     }
 
                     .content{
-                        margin-top: 100px;
+                        margin-top: 40px;
+                        padding-top: 30px;
+                        border-top:4px solid #f6f6f6;
                     }
+
                     `}
                 </style>
             </div>
