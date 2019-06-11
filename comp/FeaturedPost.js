@@ -15,7 +15,7 @@ export class FeaturedPost extends React.Component {
                     {`
                     .f-post{
                         box-sizing: border-box;
-                        height:100%;
+                        height:500px;
                         width:100%;
                         background:transparent;
                         position:relative;

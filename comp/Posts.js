@@ -27,10 +27,9 @@ class Posts extends React.Component {
 
                 {
                     posts.map( post => {
-                        <Post title={post.title} /> 
+                        return <Post title={post.title} /> 
                     })
                 }
-                <Post title="Exploring React and axios in deep" />
 
                 <style jsx>
                     {`
