@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Link from 'next/link'
 
 export class Post extends React.Component {
 
@@ -23,9 +24,11 @@ export class Post extends React.Component {
     render() {
         return (
             <div className="post-w">
-                <a href="#">
+                <Link as="/post" href={`/post?id=${this.props.id}`}> 
+                <a>
                     {this.state.title}
                 </a>
+                </Link>
                 <div className="info-w">
                     {this.state.date}
                 </div>

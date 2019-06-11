@@ -1,14 +1,36 @@
+import axios from 'axios'
+import Link from 'next/link'
 
 export class FeaturedPost extends React.Component {
+
+    state = {
+        id: '',
+        title: '',
+        author: ''
+    }
+
+    async componentDidMount() {
+        const { data } = await axios.get('/api/all')
+        const feat = data[0]
+
+        this.setState({
+            id: feat._id,
+            title: feat.title,
+            author: feat.author
+        })
+    }
+
     render() {
         return (
             <div className="f-post">
                 <div className="img"></div>
                 <div className="overlay">
-                    <a className="title" href="#">
-                        Taking a look at the Facebook APIs
+                <Link as="/post" href={`/post?id=${this.state.id}`}>
+                    <a className="title">
+                       { this.state.title}
                     </a>
-                    <a href="#">Ajay Yadav</a>
+                </Link>
+                    <a href="#"> {this.state.author} </a>
                 </div>
 
                 <style jsx>
