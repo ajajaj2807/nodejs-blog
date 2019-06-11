@@ -30,13 +30,17 @@ app.prepare().then(() => {
     
 //create a post
 
+const d = new Date()
+
+const datest = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear()
+
 server.post( '/api/create' ,(req, res) => {
     post.create(
         {
             title: req.body.title,
             author: req.body.author,
             content: req.body.content,
-            date: Date()
+            date: datest 
         }, (err, post) => {
             if(err) res.status(400).send('Unable to create todo list')
             res.status(200).json(post)

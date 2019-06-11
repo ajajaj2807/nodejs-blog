@@ -27,7 +27,7 @@ class Posts extends React.Component {
 
                 {
                     posts.map( post => {
-                        return <Post title={post.title} /> 
+                        return <Post id={post._id} /> 
                     })
                 }
 

@@ -1,13 +1,33 @@
+import Axios from "axios";
 
 export class Post extends React.Component {
+
+    state = {
+        title:'Loading...',
+        author: '',
+        date: 'loading'
+    }
+    async componentDidMount() {
+        const { data } = await Axios.get('/api/all')
+        
+        const currentPost = data.filter(post => post._id == this.props.id)
+        console.log(currentPost)
+
+        this.setState({
+            title: currentPost[0].title,
+            author: currentPost[0].author,
+            date: currentPost[0].date
+        })
+    }
+
     render() {
         return (
             <div className="post-w">
                 <a href="#">
-                    {this.props.title}
+                    {this.state.title}
                 </a>
                 <div className="info-w">
-                    May 18, 2019
+                    {this.state.date}
                 </div>
 
                 <style jsx>
