@@ -6,6 +6,7 @@
      `$ npm i`
  3.  Rename `'config.example.js'` to `'config.js'`
  4. Fill up your database details in `'config.js'`
+ 5. Run `$ npm run dev` to start the server.
 
 > You need to have NodeJS, Git bash and MongoDB installed before running these commands.
 
