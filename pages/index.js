@@ -4,6 +4,8 @@ import Sidebar from '../comp/Sidebar'
 import MainBody from '../comp/MainBody'
 
 const Index = () => {
+
+
     return (
         <div className="main-w">
             <Head>

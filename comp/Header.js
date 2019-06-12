@@ -1,12 +1,15 @@
+import Link from 'next/link'
 
 class Header extends React.Component {
     render(){
         return(
             <div className="header-w">
 
-                <div className="logo">
+                <Link href='/'>
+                <a className="logo">
                     ydv
-                </div>
+                </a>
+                </Link>
 
                 <style jsx>
                     {`
@@ -19,6 +22,9 @@ class Header extends React.Component {
                     }
 
                     .logo{
+                        display: block;
+                        text-decoration: none;
+                        color:#262626;
                         height:100px;
                         background:#fff;
                         font-family: Gotham;

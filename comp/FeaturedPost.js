@@ -4,6 +4,7 @@ import Link from 'next/link'
 export class FeaturedPost extends React.Component {
 
     state = {
+        isLoading:true,
         id: '',
         title: '',
         author: ''
@@ -11,9 +12,10 @@ export class FeaturedPost extends React.Component {
 
     async componentDidMount() {
         const { data } = await axios.get('/api/all')
-        const feat = data[0]
+        const feat = data[ data.length - 1]
 
         this.setState({
+            isLoading:false,
             id: feat._id,
             title: feat.title,
             author: feat.author
@@ -21,6 +23,9 @@ export class FeaturedPost extends React.Component {
     }
 
     render() {
+
+        if(this.state.isLoading) return <div></div>
+        else 
         return (
             <div className="f-post">
                 <div className="img"></div>

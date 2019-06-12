@@ -4,9 +4,9 @@ import Link from 'next/link'
 export class Post extends React.Component {
 
     state = {
-        title:'Loading...',
+        title:'',
         author: '',
-        date: 'loading'
+        date: ''
     }
     async componentDidMount() {
         const { data } = await Axios.get('/api/all')

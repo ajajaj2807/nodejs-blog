@@ -20,7 +20,10 @@ class Posts extends React.Component {
     }
 
     render() {
-        const { posts } = this.state
+        const { posts, isLoading } = this.state
+
+        if(isLoading) return <div></div>
+        else
         return (
             <div className="posts-w">
                 <h2>Recent Posts </h2>
