@@ -14,6 +14,9 @@ const post = new mongoose.Schema({
     },
     date: {
         type: String
+    },
+    viewCount: {
+        type: Number
     }
 },
 {

@@ -4,7 +4,7 @@ export class MainBody extends React.Component {
     render() {
         return (
             <div className="main-w">
-                <h2>Featured</h2>
+                <h2>Popular</h2>
 
                 <FeaturedPost />
 

@@ -12,7 +12,15 @@ export class FeaturedPost extends React.Component {
 
     async componentDidMount() {
         const { data } = await axios.get('/api/all')
-        const feat = data[ data.length - 1]
+        
+        var mv = 0
+        for(var i=0;i<data.length;i++ ){
+            if(data[mv].viewCount < data[i].viewCount){
+                mv = i
+            }
+        } 
+
+        const feat = data[ mv ]
 
         this.setState({
             isLoading:false,

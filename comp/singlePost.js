@@ -1,4 +1,3 @@
-
 import Axios from 'axios'
 
 const ReactMarkdown = require('react-markdown')
@@ -26,15 +25,25 @@ export class SinglePost extends React.Component {
             title: currentPost[0].title,
             author: currentPost[0].author,
             date: currentPost[0].date,
-            content: currentPost[0].content
+            content: currentPost[0].content,
+            viewCount: currentPost[0].viewCount
         })
+
+        //increment viewCount
+
+        Axios.post(`/api/update/${currentPost[0]._id}`, {} ).then(
+            (res) => {
+                console.log(res)
+            }
+        )
+
     }
 }
 
 
     render() {
 
-        const { error, isLoading, title, author, date, content } = this.state
+        const { error, isLoading, title, author, date, content, viewCount } = this.state
 
         if(isLoading) return <div className="loading-w"> 
         <style jsx>
@@ -64,7 +73,7 @@ export class SinglePost extends React.Component {
             <div className="post-w">
                 <h1> { title }</h1>
                 <div className="info-w">
-                    {author} . { date }
+                    {author} . { date } . { (viewCount + 1) } { (viewCount + 1 == 1) ? 'View' : 'Views' }
                 </div>
                 <div className="content">
                     <ReactMarkdown source={ content } />
@@ -82,7 +91,9 @@ export class SinglePost extends React.Component {
                     }
                     h1{
                         color:#363636;
+                        font-size: 3em;
                         background: #fff;
+                        font-weight: 800;
                     }
                     .info-w{
                         font-size: 0.9em;

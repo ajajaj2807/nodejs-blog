@@ -40,7 +40,8 @@ server.post( '/api/create' ,(req, res) => {
             title: req.body.title,
             author: req.body.author,
             content: req.body.content,
-            date: datest 
+            date: datest ,
+            viewCount: 0
         }, (err, post) => {
             if(err) res.status(400).send('Unable to create todo list')
             res.status(200).json(post)
@@ -71,16 +72,15 @@ server.get('/api/delete/:id', (req, res, next) => {
     })
 })
 
-// update a post
+// update a post views
 
-server.post( '/api/update', (req, res, next) => {
+server.post( '/api/update/:id', (req, res, next) => {
     const id = req.params.id
     post.findById(id, (err, post) => {
         if(err) return next(new Error('Post not found'))
         else {
-            post.name = req.body.name
-            post.author = req.body.author
-            post.content = req.body.content
+
+            post.viewCount += 1
 
             post.save(
                 (err, post) => {
@@ -91,8 +91,6 @@ server.post( '/api/update', (req, res, next) => {
         }
     })
 })
-
-
 
 
     server.get('*', (req, res) => {
