@@ -19,8 +19,6 @@
 
 > Posts currently support markdown syntax. Go to https://stackedit.io/ to edit posts and make your next post look awesome!
 
-4. Add post views
-5. More coming soon...
-
+4. More coming soon...
 
 > Feel free to use this as a template for your own blog. (No credits needed 😄)
