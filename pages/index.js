@@ -10,6 +10,7 @@ const Index = () => {
         <div className="main-w">
             <Head>
                 <link rel="stylesheet" href="../static/main.css" />
+                <title>ydv blog</title>
             </Head>
             <Header />
             <MainBody />

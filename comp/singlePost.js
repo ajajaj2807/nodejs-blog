@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import Head from 'next/head'
 
 const ReactMarkdown = require('react-markdown')
 
@@ -45,7 +46,10 @@ export class SinglePost extends React.Component {
 
         const { error, isLoading, title, author, date, content, viewCount } = this.state
 
-        if(isLoading) return <div className="loading-w"> 
+        if(isLoading) return <div className="loading-w">
+            <Head>
+                <title>Loading...</title>
+            </Head> 
         <style jsx>
             {`
             .loading-w{
@@ -71,6 +75,9 @@ export class SinglePost extends React.Component {
         else if(!isLoading && !error)
         return (
             <div className="post-w">
+                <Head>
+                    <title> {title} </title>
+                </Head> 
                 <h1> { title }</h1>
                 <div className="info-w">
                     {author} . { date } . { (viewCount + 1) } { (viewCount + 1 == 1) ? 'View' : 'Views' }
@@ -115,7 +122,9 @@ export class SinglePost extends React.Component {
         )
         else if(error) return(
             <div className="error-w"> An Unexpected Error occured
-            
+            <Head>
+                <title>Error :(</title>
+            </Head> 
             <style jsx>
                 {`
                 .error-w{
