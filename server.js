@@ -41,7 +41,9 @@ server.post( '/api/create' ,(req, res) => {
             author: req.body.author,
             content: req.body.content,
             date: datest ,
-            viewCount: 0
+            viewCount: 0,
+            likes: 0,
+            dislikes: 0
         }, (err, post) => {
             if(err) res.status(400).send('Unable to create todo list')
             res.status(200).json(post)
@@ -81,6 +83,29 @@ server.post( '/api/update/:id', (req, res, next) => {
         else {
 
             post.viewCount += 1
+
+            post.save(
+                (err, post) => {
+                    if(err) res.status(400).send('Unable to update the post')
+                    else res.status(200).json(post)
+                }
+            )
+        }
+    })
+})
+
+server.post( '/api/reactions/:id', (req, res, next) => {
+    const id = req.params.id
+    post.findById(id, (err, post) => {
+        if(err) return next(new Error('Post not found'))
+        else {
+
+            if(req.body.likes){
+                post.likes += 1
+            }
+            if(req.body.dislikes){
+                post.dislikes += 1
+            }
 
             post.save(
                 (err, post) => {

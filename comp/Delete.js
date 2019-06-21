@@ -26,7 +26,7 @@ class Delete extends React.Component {
             <div className="post-w">
                 {
                     this.state.posts.map(post => {
-                        return <button onclick={this.deletePost(post._id)}>{post.title}</button>
+                        return <button onClick={this.deletePost(post._id)}>{post.title}</button>
                     })
                 }
             </div>

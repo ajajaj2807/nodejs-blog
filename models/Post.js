@@ -17,7 +17,13 @@ const post = new mongoose.Schema({
     },
     viewCount: {
         type: Number
-    }
+    },
+    likes: {
+        type: Number
+    },
+    dislikes: {
+        type: Number
+    } 
 },
 {
     collection: 'posts'

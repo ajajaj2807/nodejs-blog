@@ -1,7 +1,7 @@
-import Post from './Post'
+import APost from './APost'
 import axios from 'axios'
 
-class Posts extends React.Component {
+class APosts extends React.Component {
 
     ids = []
 
@@ -29,15 +29,17 @@ class Posts extends React.Component {
 
                 {
                     posts.map( post => {
-                        return <Post id={post._id} /> 
+                        return <APost id={post._id} /> 
                     })
                 }
 
                 <style jsx>
                     {`
                     .posts-w{
-                        margin-top: 20px;
-                        width: 80%;
+                        margin-top: 50px;
+                        position:relative;
+                        left:50%;
+                        transform:translateX(-50%);
                     }
                     `}
                 </style>
@@ -47,4 +49,4 @@ class Posts extends React.Component {
     }
 }
 
-export default Posts
+export default APosts

@@ -37,7 +37,6 @@ export class CreatePost extends React.Component {
     render() {
         return (
             <div className="create-p">
-                <h1>Create New Post</h1>
                 <form onSubmit={this.handleSubmit} className="form-w">
                     <input onChange={this.handleTitleChange} name="title" type="text" placeholder=" Post Title" />
                     <input onChange={this.handleAuthorChange} name="author" type="text" placeholder="Author's Username" />

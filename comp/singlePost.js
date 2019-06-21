@@ -1,6 +1,5 @@
 import Axios from 'axios'
 import Head from 'next/head'
-
 const ReactMarkdown = require('react-markdown')
 
 export class SinglePost extends React.Component {
@@ -17,12 +16,13 @@ export class SinglePost extends React.Component {
     async componentDidMount() {
         const { data } = await Axios.get('/api/all')
         const currentPost = data.filter(post => post._id == this.props.url.query.id)
-
+        console.log(this.props.url)
         if(!currentPost[0]){
             this.setState({error: true, isLoading: false})
         }else if(currentPost[0]){
         this.setState({
             isLoading: false,
+            id:currentPost[0]._id,
             title: currentPost[0].title,
             author: currentPost[0].author,
             date: currentPost[0].date,
@@ -44,7 +44,7 @@ export class SinglePost extends React.Component {
 
     render() {
 
-        const { error, isLoading, title, author, date, content, viewCount } = this.state
+        const { id, error, isLoading, title, author, date, content, viewCount } = this.state
 
         if(isLoading) return <div className="loading-w">
             <Head>
@@ -53,8 +53,9 @@ export class SinglePost extends React.Component {
         <style jsx>
             {`
             .loading-w{
-                position:relative;
-                top:50%;
+                position:absolute;
+                top:30%;
+                z-index: 10;
                 left: 50%;
                 transform: translateX(-50%);
                 border: 4px solid #f6f6f6;
@@ -77,6 +78,7 @@ export class SinglePost extends React.Component {
             <div className="post-w">
                 <Head>
                     <title> {title} </title>
+                    <script id="dsq-count-scr" src="//ajajaj-blog.disqus.com/count.js" async></script>
                 </Head> 
                 <h1> { title }</h1>
                 <div className="info-w">
@@ -85,7 +87,7 @@ export class SinglePost extends React.Component {
                 <div className="content">
                     <ReactMarkdown source={ content } />
                 </div>
-
+                
                 <style jsx>
                     {`
                     .post-w{
@@ -129,12 +131,10 @@ export class SinglePost extends React.Component {
                 {`
                 .error-w{
                     font-family: Open Sans;
-                    height:200px;
-                    width:70%;
-                    position:relative;
-                    left:50%;
-                    top:50%;
-                    transform:translateX(-50%);
+                    padding: 2em 0;
+                    width: 70%;
+                    margin-left:15vw;
+                    background:#eee;
                     text-align:center;
                     font-size:2em;
                     font-weight: 700;

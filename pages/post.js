@@ -1,7 +1,7 @@
 import Header from '../comp/Header'
 import Head from 'next/head'
 import SinglePost from '../comp/singlePost'
-import UserDetails from '../comp/UserDetails'
+import PostRef from '../comp/PostRef'
 
 const Post = (props) => {
     return (
@@ -11,12 +11,12 @@ const Post = (props) => {
             </Head>
             <Header />
             <SinglePost url={props.url} />
-            <UserDetails />
+            <PostRef url={props.url} />
+            
             <style jsx>
                 {`
                 .main-w{
-                    display:grid;
-                    grid-template-columns: 2fr 1fr;
+
                 }
                 `}
             </style>
