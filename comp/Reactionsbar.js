@@ -51,12 +51,7 @@ updateDislikes = () => {
 }
 
     render() {
-        if(this.state.isLoading)
-        return(
-            <>
-            </>
-        )
-        else
+        
         return (
             <div className="main-w">
                 <span className="title">
@@ -64,12 +59,12 @@ updateDislikes = () => {
                 </span>
 
                 <div className="reactions-w">
-                    <button onClick={this.updateLikes}>😄</button>
-                    <br/><span>{this.state.likes }</span>
+                    <button>😄</button>
+                    <br/><span> 19 </span>
                 </div>
                 <div className='reactions-w'>
-                    <button onClick={this.updateDislikes}>😞</button>
-                    <br/><span> {this.state.dislikes } </span>
+                    <button>😞</button>
+                    <br/><span> 11 </span>
                 </div>
                 <style jsx>
                     {`

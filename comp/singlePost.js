@@ -13,79 +13,22 @@ export class SinglePost extends React.Component {
     }
 
 
-    async componentDidMount() {
-        const { data } = await Axios.get('/api/all')
-        const currentPost = data.filter(post => post._id == this.props.url.query.id)
-        console.log(this.props.url)
-        if(!currentPost[0]){
-            this.setState({error: true, isLoading: false})
-        }else if(currentPost[0]){
-        this.setState({
-            isLoading: false,
-            id:currentPost[0]._id,
-            title: currentPost[0].title,
-            author: currentPost[0].author,
-            date: currentPost[0].date,
-            content: currentPost[0].content,
-            viewCount: currentPost[0].viewCount
-        })
-
-        //increment viewCount
-
-        Axios.post(`/api/update/${currentPost[0]._id}`, {} ).then(
-            (res) => {
-                console.log(res)
-            }
-        )
-
-    }
-}
-
-
     render() {
 
         const { id, error, isLoading, title, author, date, content, viewCount } = this.state
-
-        if(isLoading) return <div className="loading-w">
-            <Head>
-                <title>Loading...</title>
-            </Head> 
-        <style jsx>
-            {`
-            .loading-w{
-                position:absolute;
-                top:30%;
-                z-index: 10;
-                left: 50%;
-                transform: translateX(-50%);
-                border: 4px solid #f6f6f6;
-                border-top: 4px solid #686868;
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                animation: spin 2s linear infinite;
-            }
-              
-              @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-              }
-            `}
-        </style>
-        </div>
-        else if(!isLoading && !error)
+        if(1)
         return (
             <div className="post-w">
                 <Head>
-                    <title> {title} </title>
+                    <title> 'Making MERN stack apps' </title>
                     <script id="dsq-count-scr" src="//ajajaj-blog.disqus.com/count.js" async></script>
                 </Head> 
-                <h1> { title }</h1>
+                <h1> Making MERN stack apps </h1>
                 <div className="info-w">
-                    {author} . { date } . { (viewCount + 1) } { (viewCount + 1 == 1) ? 'View' : 'Views' }
+                    Ajay Yadav . 28/07 . 58 Views
                 </div>
                 <div className="content">
-                    <ReactMarkdown source={ content } />
+                    <ReactMarkdown source={ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in *culpa qui officiale ***deserunt mollit anim id est laborum.' } />
                 </div>
                 
                 <style jsx>

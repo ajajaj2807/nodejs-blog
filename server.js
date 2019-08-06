@@ -7,6 +7,7 @@ const post = require('./models/Post')
 
 var config = require('./config')
 
+
 mongoose.connect(config.DB, {
     useNewUrlParser: true
 }, (err, db) => {
