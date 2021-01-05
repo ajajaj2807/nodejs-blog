@@ -15,7 +15,7 @@
   "author": "Ajay Yadav",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "disqus-react": "^1.0.5",
     "express": "^4.17.1",
     "global-tunnel": "^1.2.0",
